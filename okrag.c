@@ -5,9 +5,10 @@
 #define TOLERANCJA 7
 #define PI 3.14159265
 
-void stworz_kolo(int r_x, int r_y, int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], double kat, double kat_obrotu)
+void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], double kat, double kat_obrotu)
 {
-    int pocz_x = r_x / 2 + srodek_x, pocz_y = r_y / 2 + srodek_y, r;
+    int pocz_x = ROZMIAR_X / 2 + srodek_x, pocz_y = ROZMIAR_Y / 2 - srodek_y, r;
+    //srodek_y = -1 *srodek_y;
     double a1 = tan (kat_obrotu * PI / 180), a2 = -1 / a1;
     if(a1 == 0.0)
         a2 = -1000000000;
