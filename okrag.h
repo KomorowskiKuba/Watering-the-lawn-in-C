@@ -6,6 +6,4 @@
 
 void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], double kat, double kat_obrotu);
 
-void rysuj_heatmape(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * f, int r_x, int r_y, char *nazwa);
-
 #endif KOLO_W_C_H_INCLUDED

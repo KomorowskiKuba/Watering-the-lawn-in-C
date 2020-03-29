@@ -1,13 +1,13 @@
 #include "rysowanie.h"
 
-void rysuj_heatmape(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * f, int r_x, int r_y, char *nazwa)
+void rysuj_heatmape(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * f, char *nazwa)
 {
     f = fopen(nazwa, "wb");
-    fprintf(f, "P6\n%d %d\n255\n", r_x, r_y);
+    fprintf(f, "P6\n%d %d\n255\n", ROZMIAR_X, ROZMIAR_Y);
 
-    for(int i = 0; i < r_y; i++)
+    for(int i = 0; i < ROZMIAR_Y; i++)
     {
-        for(int j = 0; j < r_x; j++)
+        for(int j = 0; j < ROZMIAR_X; j++)
         {
             static unsigned char color[3];
             if(tab[i][j] == 0)
