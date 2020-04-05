@@ -5,7 +5,7 @@
 
 int tab[ROZMIAR_Y][ROZMIAR_X];
 
-void wypelnij360(int tab[ROZMIAR_Y][ROZMIAR_X],int x,int y,double wspolczynnik);
+void wypelnij360(int tab[ROZMIAR_Y][ROZMIAR_X],int x0,int y0,double wspolczynnik);
 
 double sprawdzanie_warunku(int tablica[ROZMIAR_Y][ROZMIAR_X], int srodek_x, int srodek_y);
 
