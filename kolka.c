@@ -8,13 +8,13 @@ void wypelnij360(int tab[ROZMIAR_Y][ROZMIAR_X],int x0,int y0,double wspolczynnik
     double test = 0.0;
     int x,y;
 
-    for(x = x0; x < 3900; x += 100){
-        for(y = y0; y < 7900; y += 100){
+    for(x = x0; x < 3750; x += 50){
+        for(y = y0; y < 7750; y += 100){
 	   printf("wspolrzedne x:%d y:%d\n",x,y);
 	   test = sprawdzanie_warunku(tab,x,y);
 	   if(test >= wspolczynnik){
 	       stworz_kolo(y,x,tab,360,0);
-	       y += 200;
+	       y += 100;
 	   }
 	}
     }
@@ -33,7 +33,7 @@ double sprawdzanie_warunku(int tablica[ROZMIAR_Y][ROZMIAR_X], int srodek_x, int 
                 y = srodek_y - r + j;
                 if((i-r) * (i-r) + (j-r) * (j-r) <= r * r + TOLERANCJA){
 		    if(tab[x][y] == 0){
-			niepodlane++;
+			niepodlane += 1.4; // do ustalenia
 		    	zbadane_pola++;
 		    }
 		    else if(tab[x][y] > 0){
