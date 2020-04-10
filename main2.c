@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include <math.h>
 #include "okrag.h"
 #include "rysowanie.h"
 #include "kolka.h"
+#include "krawedzie.h"
+#include "rogi.h"
 
 int main(int argc, char** argv)
 {
@@ -32,6 +33,10 @@ int main(int argc, char** argv)
 	    }
 	}
     }
+
+    wypelnij_rogi(tab,fp,argv[1]);
+    wypelnij_krawedzie(tab,fp,argv[1]);
+
     double test = 0.6;
     x = 300;
     y = 300;
