@@ -6,4 +6,4 @@
 
 void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int kat, int kat_obrotu);
 
-#endif
+#endif OKRAG_H_INCLUDED

@@ -8,4 +8,8 @@
 
 void rysuj_heatmape(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * f, char *nazwa);
 
-#endif
+int szukaj_max(int tab[ROZMIAR_Y][ROZMIAR_X]);
+
+void przemnoz_przez_czas(int tab[ROZMIAR_Y][ROZMIAR_X], int mnoznik);
+
+#endif RYSOWANIE_H_INCLUDED
