@@ -53,7 +53,7 @@ void rysuj_heatmape(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * f, char *nazwa)
             else if(tab[i][j] > 0)
             {
                 color[0]= 0; /* red */
-                color[1]= 255 - tab[i][j]; /* green */
+                color[1]= 255 - 30 * tab[i][j]; /* green */
                 color[2]= 0; /* blue */
                 fwrite(color, 1, 3, f);
             }
