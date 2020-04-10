@@ -1,8 +1,10 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 #include "okrag.h"
 #include "rysowanie.h"
 #include "kolka.h"
+#include "krawedzie.h"
+#include "rogi.h"
 
 int main(int argc, char** argv)
 {
@@ -15,15 +17,15 @@ int main(int argc, char** argv)
 	     int k,l;
 	   
 	     if( c == '*'){
-	       for(k = 100*x ; k < 100*(x+1); k++){
-	          for(l = 100*y ;l < 100*(y+1); l++){
-		    tab[k][l] = -1;
+	       for(k = 100*x; k < 100*(x+1); k++){
+	          for(l = 100*y; l < 100*(y+1); l++){
+		    tab[k][l] = -999;
 	          }
 	       }
     	    }
 	    else if( c == '#'){
-	       for(k=100*x ; k < 100*(x+1); k++){
-	          for(l=100*y ;l < 100*(y+1); l++){
+	       for(k=100*x; k < 100*(x+1); k++){
+	          for(l=100*y; l < 100*(y+1); l++){
 		    tab[k][l] = 0;
 	          }
 	       }
@@ -32,13 +34,21 @@ int main(int argc, char** argv)
 	    }
 	}
     }
-    double test = 0.6;
+
+    wypelnij_rogi(tab,fp,argv[1]);
+    wypelnij_krawedzie(tab,fp,argv[1]);
+
+    double test = 0.5;
     x = 300;
     y = 300;
     wypelnij360(tab,x,y,test);
 
-    FILE *f = argc > 2 ? fopen(argv[2], "wb") : stdin;
-    char* rysunek = argv[3];
+    FILE *f = argc > 2 ? fopen(argv[2], "wb") : stdout;
+    char* rysunek = argv[2];
+
+    int cykle = argc > 3 ? atoi(argv[3]) : 1;
+    if( cykle > 1) 
+        przemnoz_przez_czas(tab,cykle);
     rysuj_heatmape(tab,f,rysunek);
     return 0;
 }
