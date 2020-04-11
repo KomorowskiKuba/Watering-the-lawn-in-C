@@ -1,19 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
+#include <Windows.h>
 
 #include "okrag.h"
 #include "rysowanie.h"
 #include "kolka.h"
 #include "krawedzie.h"
 #include "rogi.h"
+#include "index.h"
 
 int tab[ROZMIAR_Y][ROZMIAR_X] = {{0}};
 
 void informacje()
 {
     printf("Uzycie programu: \n");
-    printf("./a.out(Nazwa pliku wyjsciowego) -m nazwa_pliku_wejsciowego -c ilosc_cykli(z zakresu 1 - 100, domyslnie 1) -h nazwa_pliku_wyjscia_heatmapy(w formacie .ppm, domyslnie Heatmapa.ppm) -z nazwa_pliku_wyjscia_wspolrzednych(domyslnie Wspolrzedne.txt\n");
+    printf("./podlewanie -m nazwa_pliku_wejsciowego -c ilosc_cykli(z zakresu 1 - 100, domyslnie 1) -h nazwa_pliku_wyjscia_heatmapy(w formacie .ppm, domyslnie Heatmapa.ppm)\n");
+    printf("-z nazwa_pliku_wyjscia_wspolrzednych(domyslnie Wspolrzedne.txt\n");
 }
 
 int main(int argc, char *argv[])
@@ -37,13 +41,19 @@ int main(int argc, char *argv[])
             case 'c': // Ilosc cykli
             {
                 flaga2 = 1;
-                //if(isdigit(optarg))
+                int licznik = 0;
+                for(int i = 0; i < strlen(optarg); i++)
+                {
+                    if(isdigit(optarg[i]))
+                        licznik++;
+                }
+                if(licznik == strlen(optarg))
                     ilosc_cykli = atoi(optarg);
-                //else
-                //{
-                    //fprintf(stderr, "Format zmiennej jest nieprawidlowy!");
-                    //return errorlevel--;
-                //}
+                else
+                {
+                    fprintf(stderr, "Podany argument nie jest liczba!\n");
+                    return errorlevel--;
+                }
                 break;
             }
             case 'h': // Nazwa pliku heatmapy
@@ -114,8 +124,6 @@ int main(int argc, char *argv[])
         }
     }
 
-    //printf("%s, %d, %s, %s\n", nazwa_pliku_wejsciowego, ilosc_cykli, nazwa_pliku_wyjscia_heatmapy, nazwa_pliku_wyjscia_wspolrzednych);
-
     int x,y = 0;
     indx = 0;
 
@@ -178,6 +186,22 @@ int main(int argc, char *argv[])
     fclose(in);
     fclose(out_hmapa);
     fclose(out_zraszacze);
+
+    HANDLE kolor;
+    kolor = GetStdHandle( STD_OUTPUT_HANDLE );
+
+    printf("Zraszacze zostaly pomyslnie rozmieszczone. Wspolrzedne ich ustawienia znajduja sie w pliku: %s, natomiast mapa ciepla po ilosci cykli: %d znajduje sie w pliku: %s\n", nazwa_pliku_wyjscia_wspolrzednych, ilosc_cykli, nazwa_pliku_wyjscia_heatmapy);
+    printf("Legenda mapy ciepla:\n");
+    SetConsoleTextAttribute( kolor, 4);
+    printf("Kolor czerwony: niepodlana trawa\n");
+    SetConsoleTextAttribute( kolor, 2);
+    printf("Kolor zielony: podlana trawa (odcien odpowiada stopniowi podlania)\n");
+    SetConsoleTextAttribute( kolor, 9);
+    printf("Kolor niebieski: przelana trawa\n");
+    SetConsoleTextAttribute( kolor, 15);
+    printf("Kolor czarny: murek\n");
+
+
 
     return 0;
 }
