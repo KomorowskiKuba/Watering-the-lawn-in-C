@@ -1,12 +1,13 @@
-#ifndef ROGI_H
-#define ROGI_H
+#ifndef ROGI_H_INCLUDED
+#define ROGI_H_INCLUDED
 
-typedef struct {
+struct e{
         int x;
         int y;
         int kat;
         int kat_obrotu;
-} rogi_t;
+} typedef rogi_t;
+
 void wypelnij_rogi(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * f, char *nazwa);
 
-#endif
+#endif // ROGI_H_INCLUDED
