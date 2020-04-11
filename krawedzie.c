@@ -21,11 +21,11 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
     for(i = 0; i < 40; i++){
         for(j = 0; j < 80; j++){
 	    if(tab_wejsciowa[i][j] == -9){
-		if(i > 0 && tab_wejsciowa[i-1][j] == 0 && tab_wejsciowa[i-2][j] == 0)
+		if(i > 1 && tab_wejsciowa[i-1][j] == 0 && tab_wejsciowa[i-2][j] == 0)
 		    licznik[0] += 1;
 		else
 		    licznik[0] = 0;
-		if(i < 40 && tab_wejsciowa[i+1][j] == 0 && tab_wejsciowa[i+2][j] == 0)
+		if(i < 39 && tab_wejsciowa[i+1][j] == 0 && tab_wejsciowa[i+2][j] == 0)
 		    licznik[2] += 1;
 		else
 		    licznik[2] = 0;
@@ -78,7 +78,7 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
 	    }
 	    if(licznik[1] == 8){
 		for(k = 0; k < 5; k++){
-		   if((i > 4 && (tab_wejsciowa[j-8][i-k] < 0) || tab_wejsciowa[j+8][i-k] < 0) || (i < 37 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
+		   if((i > 4 && (tab_wejsciowa[j-8][i-k] < 0 || tab_wejsciowa[j+8][i-k] < 0)) || (i < 37 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
 			warunek++;
 		}
 		if(warunek == 5)
@@ -93,7 +93,7 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
 	    }
 	    if(licznik[3] == 8){
 		for(k = 0; k < 5; k++){
-		   if((i > 4 && (tab_wejsciowa[j-8][i-k] < 0) || tab_wejsciowa[j+8][i-k] < 0) || (i < 37 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
+		   if((i > 4 && (tab_wejsciowa[j-8][i-k] < 0 || tab_wejsciowa[j+8][i-k] < 0)) || (i < 37 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
 			warunek++;
 		}
 		if(warunek == 5)

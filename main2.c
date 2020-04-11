@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 {
     FILE * fp = argc > 1 ? fopen(argv[1], "r") : stdin;
     int x,y = 0;
-    indx = 0;
+
     for(x = 0; x < 40; x++){
         for(y = 0; y < 81; y++){
 	     char c = getc(fp);
@@ -50,11 +50,5 @@ int main(int argc, char** argv)
     if( cykle > 1) 
         przemnoz_przez_czas(tab,cykle);
     rysuj_heatmape(tab,f,rysunek);
-
-     FILE * zraszacze = argc > 4 ? fopen(argv[4], "w") : stdout;
-    fprintf(zraszacze, "polozenie x, polozenie y, kat, kat obrotu\n");
-    for(int i=0; i<indx; i++){
-	fprintf(zraszacze, ("%d, %d, %d, %d\n"), tab_okregow[i].x, tab_okregow[i].y, tab_okregow[i].kat, tab_okregow[i].kat_obrotu);
-    }
     return 0;
 }
