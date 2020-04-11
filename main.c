@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
     {
         if(ilosc_cykli > 100 || ilosc_cykli <= 0)
         {
-            fprintf(stderr, "Ilosc cykli musi byc z zakresu 1 - 100!\n", nazwa_pliku_wejsciowego);
+            fprintf(stderr, "Ilosc cykli musi byc z zakresu 1 - 100!\n");
             informacje();
             return ilosc_cykli;
         }
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
     //printf("%s, %d, %s, %s\n", nazwa_pliku_wejsciowego, ilosc_cykli, nazwa_pliku_wyjscia_heatmapy, nazwa_pliku_wyjscia_wspolrzednych);
 
     int x,y = 0;
-//    indx = 0;
+    indx = 0;
 
     for(x = 0; x < 40; x++)
     {
@@ -170,10 +170,10 @@ int main(int argc, char *argv[])
 
     rysuj_heatmape(tab, out_hmapa, nazwa_pliku_wyjscia_heatmapy);
 
-    //fprintf(out_zraszacze, "Polozenie x, polozenie y, kat, kat obrotu\n");
+    fprintf(out_zraszacze, "Polozenie x, polozenie y, kat, kat obrotu\n");
 
-    //for(int i = 0; i < indx; i++)
-       // fprintf(out_zraszacze, ("%7d,%12d, %7d,%7d,\n"), tab_okregow[i].x, tab_okregow[i].y, tab_okregow[i].kat, tab_okregow[i].kat_obrotu);
+    for(int i = 0; i < indx; i++)
+        fprintf(out_zraszacze, ("%7d,%12d, %7d,%7d,\n"), tab_okregow[i].x, tab_okregow[i].y, tab_okregow[i].kat, tab_okregow[i].kat_obrotu);
 
     fclose(in);
     fclose(out_hmapa);

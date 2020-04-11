@@ -17,6 +17,11 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
     int x, y, r, i, j, stan;
     int odleglosc_gora = 0, odleglosc_dol = 0, odleglosc_lewo = 0, odleglosc_prawo = 0;
     double a1 = tan ((double)kat_obrotu * PI / 180), a2 = -1 / a1;
+    tab_okregow[indx].x = srodek_x;
+    tab_okregow[indx].y = srodek_y;
+    tab_okregow[indx].kat = kat;
+    tab_okregow[indx].kat_obrotu = kat_obrotu;
+    indx++;
 
     if(a1 == 0.0)
         a2 = -1000000000;
