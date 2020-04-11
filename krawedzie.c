@@ -10,14 +10,13 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
     int c,i,j,k,x,y,warunek;
     int tab_wejsciowa[40][80] = {{0}};
     for(int i = 0; i < 40; i++){
-        for(int j = 0; j < 80; j++){
+        for(int j = 0; j < 81; j++){
             c = fgetc(dane);
             if(c == '*')
                 tab_wejsciowa[i][j] = -9;
         }
     }
     int licznik[4] = {0};
-
     for(i = 0; i < 40; i++){
         for(j = 0; j < 80; j++){
 	    if(tab_wejsciowa[i][j] == -9){
@@ -31,14 +30,15 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
 		    licznik[2] = 0;
 	    }
 	    if(licznik[0] == 8){
-		for(k = 0; k < 5; k++){
+		for(k = 0; (tab_wejsciowa[i-1-k][j-8] < 0 && tab_wejsciowa[i-1-k][j-7] >= 0) ; k++){
 		   if((i > 4 && (tab_wejsciowa[i-k][j-8] < 0 || tab_wejsciowa[i-k][j+1] < 0)) || (i < 37 &&( tab_wejsciowa[i+k][j-8] < 0 || tab_wejsciowa[i+k][j+1] < 0)))
 			warunek++;
 		}
-		if(warunek == 5)
-		    licznik[0] = 4;
+		printf("warunek = %d\n",warunek);
+		if(warunek ==  5 || warunek == 6 || warunek >= 10)
+		    licznik[0] = 5;
 		    warunek = 0;
-		if(licznik[0] == 8){
+		if(licznik[0] == 8){    
 		    x = j - 3;
 		    y = i;
 		    stworz_kolo(x*100,y*100,tab,180,0);
