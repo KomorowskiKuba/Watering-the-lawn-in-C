@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main(int argc, char **args)
 {
     srand(time(NULL));
     char tab[40][80];
     char *nazwa_pliku = (argc > 1) ? args[1] : "Mapa.txt";
-    int ilosc_ksztaltow = (argc > 2) ? args[2] : 7;
-    int max_rozmiar = (argc > 3) ? args[3] : 7;
+    int ilosc_ksztaltow = (argc > 2) ? atoi(args[2]) : 7;
+    int max_rozmiar = (argc > 3) ? atoi(args[3]) : 7;
     FILE * out = fopen(nazwa_pliku, "w");
 
     for(int i = 0; i < 80; i++)

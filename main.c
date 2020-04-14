@@ -2,14 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <Windows.h>
 
 #include "okrag.h"
 #include "rysowanie.h"
 #include "kolka.h"
 #include "krawedzie.h"
 #include "rogi.h"
-#include "index.h"
 
 int tab[ROZMIAR_Y][ROZMIAR_X] = {{0}};
 
@@ -187,18 +185,11 @@ int main(int argc, char *argv[])
     fclose(out_hmapa);
     fclose(out_zraszacze);
 
-    HANDLE kolor;
-    kolor = GetStdHandle( STD_OUTPUT_HANDLE );
-
     printf("Zraszacze zostaly pomyslnie rozmieszczone. Wspolrzedne ich ustawienia znajduja sie w pliku: %s, natomiast mapa ciepla po ilosci cykli: %d znajduje sie w pliku: %s\n", nazwa_pliku_wyjscia_wspolrzednych, ilosc_cykli, nazwa_pliku_wyjscia_heatmapy);
     printf("Legenda mapy ciepla:\n");
-    SetConsoleTextAttribute( kolor, 4);
     printf("Kolor czerwony: niepodlana trawa\n");
-    SetConsoleTextAttribute( kolor, 2);
     printf("Kolor zielony: podlana trawa (odcien odpowiada stopniowi podlania)\n");
-    SetConsoleTextAttribute( kolor, 9);
     printf("Kolor niebieski: przelana trawa\n");
-    SetConsoleTextAttribute( kolor, 15);
     printf("Kolor czarny: murek\n");
 
 
