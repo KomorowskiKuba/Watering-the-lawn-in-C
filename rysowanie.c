@@ -38,32 +38,32 @@ void rysuj_heatmape(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * f, char *nazwa)
             static unsigned char color[3];
             if(tab[i][j] == 0)
             {
-                color[0]= 255; /* red */
-                color[1]= 0; /* green */
-                color[2]= 0; /* blue */
+                color[0]= 255;
+                color[1]= 0;
+                color[2]= 0;
                 fwrite(color, 1, 3, f);
             }
             else if(tab[i][j] < -100)
             {
-                color[0]= 0; /* red */
-                color[1]= 0; /* green */
-                color[2]= 0; /* blue */
+                color[0]= 0;
+                color[1]= 0;
+                color[2]= 0;
                 fwrite(color, 1, 3, f);
             }
             else if(tab[i][j] > 0 && tab[i][j] < 32)
             {
-                color[0]= 0; /* red */
-                color[1]= 255 - 8 * tab[i][j]; /* green */
-                color[2]= 0; /* blue */
+                color[0]= 0;
+                color[1]= 255 - 8 * tab[i][j];
+                color[2]= 0;
                 fwrite(color, 1, 3, f);
             }
-	    else if(tab[i][j] >= 32)
-	    {
-		color[0]= 0; /* red */
-                color[1]= 0; /* green */
-                color[2]= 125; /* blue */
+            else if(tab[i][j] >= 32)
+            {
+                color[0]= 0;
+                color[1]= 0;
+                color[2]= 125;
                 fwrite(color, 1, 3, f);
-	    }
+            }
         }
     }
     fclose(f);

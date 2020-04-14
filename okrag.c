@@ -6,7 +6,8 @@
 #define TOLERANCJA 7
 #define PI 3.14159265
 
-struct {
+struct
+{
     int x;
     int y;
 } typedef odbicie;
@@ -18,6 +19,7 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
     int x, y, r, i, j, stan;
     int odleglosc_gora = 0, odleglosc_dol = 0, odleglosc_lewo = 0, odleglosc_prawo = 0;
     double a1 = tan ((double)kat_obrotu * PI / 180), a2 = -1 / a1;
+
     tab_okregow[indx].x = srodek_x;
     tab_okregow[indx].y = srodek_y;
     tab_okregow[indx].kat = kat;
@@ -63,18 +65,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
                 else if(kat_obrotu > 90 && kat_obrotu <= 180)
@@ -85,18 +87,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
                 else if(kat_obrotu > 270 && kat_obrotu < 360)
@@ -107,18 +109,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
             }
@@ -199,18 +201,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                     {
                         if((x * x + y * y <= r * r + TOLERANCJA) && y <= a1 * x && y >= a2 * x && tab[i][j] < -100)
                         {
-                              if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
-                              {
-                                    tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
-                              }
-                              else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
-                              {
-                                  tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                              }
-                              else
-                              {
-                                  tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                              }
+                            if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
+                            {
+                                tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
+                            }
+                            else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
+                            {
+                                tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                            }
+                            else
+                            {
+                                tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                            }
                         }
                     }
                     else if(kat_obrotu > 90 && kat_obrotu <= 180)
@@ -231,10 +233,10 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             }
                         }
                     }
-                     else if(kat_obrotu > 270 && kat_obrotu < 360)
+                    else if(kat_obrotu > 270 && kat_obrotu < 360)
                     {
                         if((x * x + y * y <= r * r + TOLERANCJA) && y <= a1 * x && y <= a2 * x && tab[i][j] < -100)
-                            {
+                        {
                             if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
                             {
                                 tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
@@ -275,18 +277,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
                 else if((kat_obrotu >= 270 && kat_obrotu < 360) || (kat_obrotu > 180 && kat_obrotu < 270))
@@ -297,18 +299,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
             }
@@ -389,18 +391,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                     {
                         if((x * x + y * y <= r * r + TOLERANCJA) && (y >= a2 * x) && tab[i][j] < -100)
                         {
-                              if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
-                              {
-                                    tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
-                              }
-                              else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
-                              {
-                                  tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                              }
-                              else
-                              {
-                                  tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                              }
+                            if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
+                            {
+                                tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
+                            }
+                            else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
+                            {
+                                tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                            }
+                            else
+                            {
+                                tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                            }
                         }
                     }
                     else if((kat_obrotu >= 270 && kat_obrotu < 360) || (kat_obrotu > 180 && kat_obrotu < 270) && tab[i][j] < -100)
@@ -461,18 +463,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
                 else if(kat_obrotu > 90 && kat_obrotu <= 180)
@@ -483,18 +485,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
                 else if(kat_obrotu > 270 && kat_obrotu < 360)
@@ -505,17 +507,17 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                             tab[i][j] += stan;
 
                         if((tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                       (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                       (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                       {
-                           punkty[ilosc_odbic].x = j;
-                           punkty[ilosc_odbic++].y = i;
-                       }
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                                (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                                (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                        {
+                            punkty[ilosc_odbic].x = j;
+                            punkty[ilosc_odbic++].y = i;
+                        }
                     }
                 }
             }
@@ -595,18 +597,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                     {
                         if(x * x + y * y <= r * r + TOLERANCJA && (y >= a1 * x || y <= a2 * x) && tab[i][j] < -100)
                         {
-                              if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
-                              {
-                                    tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
-                              }
-                              else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
-                              {
-                                  tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                              }
-                              else
-                              {
-                                  tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                              }
+                            if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
+                            {
+                                tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
+                            }
+                            else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
+                            {
+                                tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                            }
+                            else
+                            {
+                                tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                            }
                         }
                     }
                     else if(kat_obrotu > 90 && kat_obrotu <= 180)
@@ -668,23 +670,23 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
                         tab[i][j] += stan;
 
                     if((tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                   (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
-                   (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                   (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                            (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] >= 0) ||
+                            (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                            (tab[i][j] >= 0 && tab[i][j+1] >= 0 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
 
-                   (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
-                   (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
-                   (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
-                   (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
-                   {
-                       punkty[ilosc_odbic].x = j;
-                       punkty[ilosc_odbic++].y = i;
-                   }
+                            (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] >= 0) ||
+                            (tab[i][j] < -100 && tab[i][j+1] < -100 && tab[i+1][j] >= 0 && tab[i+1][j+1] < -100) ||
+                            (tab[i][j] < -100 && tab[i][j+1] >= 0 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100) ||
+                            (tab[i][j] >= 0 && tab[i][j+1] < -100 && tab[i+1][j] < -100 && tab[i+1][j+1] < -100))
+                    {
+                        punkty[ilosc_odbic].x = j;
+                        punkty[ilosc_odbic++].y = i;
+                    }
                 }
             }
-       }
+        }
 
-       for(int i = srodek_x; (i <= srodek_x + r + TOLERANCJA) && (i < ROZMIAR_X); i++) // prawo
+        for(int i = srodek_x; (i <= srodek_x + r + TOLERANCJA) && (i < ROZMIAR_X); i++) // prawo
         {
             if(tab[srodek_y][i] < -100)
             {
@@ -752,18 +754,18 @@ void stworz_kolo(int srodek_x, int srodek_y, int tab[ROZMIAR_Y][ROZMIAR_X], int 
 
                     if(x * x + y * y <= r * r + TOLERANCJA && tab[i][j] < -100)
                     {
-                          if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
-                          {
-                                tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
-                          }
-                          else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
-                          {
-                              tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                          }
-                          else
-                          {
-                              tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
-                          }
+                        if(j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo) < 0)
+                        {
+                            tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j] += stan;
+                        }
+                        else if(i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol) < 0)
+                        {
+                            tab[i][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                        }
+                        else
+                        {
+                            tab[i + mnoznik_y * (- (srodek_y - i)*-2 + odleglosc_gora + odleglosc_dol)][j + mnoznik_x * (-(srodek_x - j)*-2 + odleglosc_prawo + odleglosc_lewo)] += stan;
+                        }
                     }
                 }
             }

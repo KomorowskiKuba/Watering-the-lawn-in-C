@@ -12,7 +12,7 @@ void wypelnij_rogi(int tab[ROZMIAR_Y][ROZMIAR_X], FILE * dane, char *nazwa)
     int c,k,l;
     int s=0;
     int tab_wejsciowa[40][80]= {{0}};
-    for(int i=0; i<40; i++)       // zamiana danych wejsciowych na tablice, gdzie *=-9, #=0
+    for(int i=0; i<40; i++)
     {
         for(int j=0; j<81; j++)
         {

@@ -29,43 +29,43 @@ int main(int argc, char *argv[])
     {
         switch(opt)
         {
-            case 'm': // Nazwa pliku wejsciowego
-            {
+        case 'm': // Nazwa pliku wejsciowego
+        {
 
-                flaga1 = 1;
-                nazwa_pliku_wejsciowego = optarg;
-                break;
-            }
-            case 'c': // Ilosc cykli
+            flaga1 = 1;
+            nazwa_pliku_wejsciowego = optarg;
+            break;
+        }
+        case 'c': // Ilosc cykli
+        {
+            flaga2 = 1;
+            int licznik = 0;
+            for(int i = 0; i < strlen(optarg); i++)
             {
-                flaga2 = 1;
-                int licznik = 0;
-                for(int i = 0; i < strlen(optarg); i++)
-                {
-                    if(isdigit(optarg[i]))
-                        licznik++;
-                }
-                if(licznik == strlen(optarg))
-                    ilosc_cykli = atoi(optarg);
-                else
-                {
-                    fprintf(stderr, "Podany argument nie jest liczba!\n");
-                    return errorlevel--;
-                }
-                break;
+                if(isdigit(optarg[i]))
+                    licznik++;
             }
-            case 'h': // Nazwa pliku heatmapy
+            if(licznik == strlen(optarg))
+                ilosc_cykli = atoi(optarg);
+            else
             {
-                flaga3 = 1;
-                nazwa_pliku_wyjscia_heatmapy = optarg;
-                break;
+                fprintf(stderr, "Podany argument nie jest liczba!\n");
+                return errorlevel--;
             }
-            case 'z': // Nazwa pliku ze wspolrzednymi
-            {
-                flaga4 = 1;
-                nazwa_pliku_wyjscia_wspolrzednych = optarg;
-                break;
-            }
+            break;
+        }
+        case 'h': // Nazwa pliku heatmapy
+        {
+            flaga3 = 1;
+            nazwa_pliku_wyjscia_heatmapy = optarg;
+            break;
+        }
+        case 'z': // Nazwa pliku ze wspolrzednymi
+        {
+            flaga4 = 1;
+            nazwa_pliku_wyjscia_wspolrzednych = optarg;
+            break;
+        }
         }
     }
 
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
                         tab[k][l] = -999;
                     }
                 }
-    	    }
+            }
             else if( c == '#')
             {
                 for(k=100*x; k < 100*(x+1); k++)
