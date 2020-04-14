@@ -11,7 +11,7 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
     int tab_wejsciowa[40][80] = {{0}};
     for(int i = 0; i < 40; i++){
         for(int j = 0; j < 81; j++){
-            c = fgetc(dane);
+	       	c = fgetc(dane);
             if(c == '*')
                 tab_wejsciowa[i][j] = -9;
         }
@@ -30,15 +30,14 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
 		    licznik[2] = 0;
 	    }
 	    if(licznik[0] == 8){
-		for(k = 0; (tab_wejsciowa[i-1-k][j-8] < 0 && tab_wejsciowa[i-1-k][j-7] >= 0) ; k++){
-		   if((i > 4 && (tab_wejsciowa[i-k][j-8] < 0 || tab_wejsciowa[i-k][j+1] < 0)) || (i < 37 &&( tab_wejsciowa[i+k][j-8] < 0 || tab_wejsciowa[i+k][j+1] < 0)))
+		for(k = 0; (i-1-k >= 0 && i-k-1 <= 40 && j >= 8 && j <= 72 && tab_wejsciowa[i-1-k][j-8] < 0 && tab_wejsciowa[i-1-k][j-7] >= 0); k++){
+		   if((i-k >= 0 && i-k <= 40 && j >= 8 && j+1 <= 80 && (tab_wejsciowa[i-k][j-8] < 0 || tab_wejsciowa[i-k][j+1] < 0)) || (i+k >= 0 && i+k <= 40 && j >= 8 && j+1 <= 80 && ( tab_wejsciowa[i+k][j-8] < 0 || tab_wejsciowa[i+k][j+1] < 0)))
 			warunek++;
 		}
-		printf("warunek = %d\n",warunek);
-		if(warunek ==  5 || warunek == 6 || warunek >= 10)
+		if(warunek >= 5)
 		    licznik[0] = 5;
 		    warunek = 0;
-		if(licznik[0] == 8){    
+		if(licznik[0] == 8 && j > 4 && j < 76 && i > 4 && i < 36){    
 		    x = j - 3;
 		    y = i;
 		    stworz_kolo(x*100,y*100,tab,180,0);
@@ -46,14 +45,14 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
 		}
 	    }
 	    if(licznik[2] == 8){
-		for(k = 0; k < 5; k++){
-		   if((i > 4 && (tab_wejsciowa[i-k][j-8] < 0 || tab_wejsciowa[i-k][j+1] < 0)) || (i < 37 && (tab_wejsciowa[i+k][j-8] < 0 || tab_wejsciowa[i+k][j+1] < 0)))
+		for(k = 0; (i+1+k >= 0 && i+k+1 <= 40 && j >= 8 && j <= 72 && tab_wejsciowa[i+1+k][j-8] < 0 && tab_wejsciowa[i+1+k][j-7] >= 0); k++){
+		   if((i-k >= 0 && i-k <= 40 && j >= 8 && j+1 <= 80 && (tab_wejsciowa[i-k][j-8] < 0 || tab_wejsciowa[i-k][j+1] < 0)) || (i+k >= 0 && i+k <= 40 && j >= 8 && j+1 < 80 && (tab_wejsciowa[i+k][j-8] < 0 || tab_wejsciowa[i+k][j+1] < 0)))
 			warunek++;
 		}
-		if(warunek == 5)
-		    licznik[2] = 4;
+		if(warunek >= 5)
+		    licznik[2] = 5;
 		    warunek = 0;
-		if(licznik[2] == 8){
+		if(licznik[2] == 8 && j > 4 && j < 76 && i > 4 && i < 36){
 		    x = j - 3;
 	    	    y = i + 1;
 		    stworz_kolo(x*100,y*100,tab,180,180);
@@ -67,24 +66,25 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
     for(i = 0; i < 80; i++){
 	for(j = 0; j < 40; j++){
 	    if(tab_wejsciowa[j][i] == -9){
-		if(i > 0 && tab_wejsciowa[j][i-1] == 0 && tab_wejsciowa[j][i-2] == 0)
+		if(i > 1 && tab_wejsciowa[j][i-1] == 0 && tab_wejsciowa[j][i-2] == 0)
 		    licznik[1] += 1;
 		else
 		    licznik[1] = 0;
-		if(i < 80 && tab_wejsciowa[j][i+1] == 0 && tab_wejsciowa[j][i+2] == 0)
+		if(i < 79 && tab_wejsciowa[j][i+1] == 0 && tab_wejsciowa[j][i+2] == 0)
 		    licznik[3] += 1;
 		else
 		    licznik[3] = 0;
 	    }
 	    if(licznik[1] == 8){
-		for(k = 0; k < 5; k++){
-		   if((i > 4 && (tab_wejsciowa[j-8][i-k] < 0 || tab_wejsciowa[j+8][i-k] < 0)) || (i < 37 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
+		for(k = 0; (i-1-k >= 0 && i-1-k <= 80 && j >= 8 && j <= 32 && tab_wejsciowa[j-8][i-1-k] < 0 && tab_wejsciowa[j-7][i-1-k] >= 0); k++){
+		   if((i-k >= 0 && i-k <= 80 && j >= 8 && j <= 32 && (tab_wejsciowa[j-8][i-k] < 0 || tab_wejsciowa[j+8][i-k] < 0)) || (i+k <= 80 && i+k >= 0 && j >= 8 && j <= 32 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
 			warunek++;
+
 		}
-		if(warunek == 5)
-		    licznik[1] = 4;
+		if(warunek >= 5)
+		    licznik[1] = 5;
 		    warunek = 0;
-	    	if(licznik[1] == 8){
+	    	if(licznik[1] == 8 && i > 4 && i < 76 && j < 36 && j > 4){
 		    x = i;
 		    y = j - 3;
 		    stworz_kolo(x*100,y*100,tab,180,90);
@@ -92,14 +92,14 @@ void wypelnij_krawedzie(int tab[ROZMIAR_Y][ROZMIAR_X], FILE* dane, char* nazwa){
 		}
 	    }
 	    if(licznik[3] == 8){
-		for(k = 0; k < 5; k++){
-		   if((i > 4 && (tab_wejsciowa[j-8][i-k] < 0 || tab_wejsciowa[j+8][i-k] < 0)) || (i < 37 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
+		for(k = 0; (i+1+k >= 0 && i+1+k <= 80 && j >= 8 && j <= 32 && tab_wejsciowa[j-8][i+1+k] < 0 && tab_wejsciowa[j-7][i+1+k] >= 0); k++){
+		   if((i-k >= 0 && i-k <= 80 && j >= 8 && j <= 32 && (tab_wejsciowa[j-8][i-k] < 0 || tab_wejsciowa[j+8][i-k] < 0)) || (i+k <= 80 && i+k >= 0 && j >= 8 && j <= 32 && (tab_wejsciowa[j-8][i+k] < 0 || tab_wejsciowa[j+8][i+k] < 0)))
 			warunek++;
 		}
-		if(warunek == 5)
+		if(warunek >= 5)
 		    licznik[3] = 4;
 		    warunek = 0;
-		if(licznik[3] == 8){
+		if(licznik[3] == 8 && i > 4 & i < 76 && j > 4 && j < 36){
 		   x = i + 1;
 	    	   y = j - 3;
 		   stworz_kolo(x*100,y*100,tab,180,270);
